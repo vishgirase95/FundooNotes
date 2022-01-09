@@ -27,8 +27,8 @@ class Registration {
       .then((result) => {
         res.status(StatusCodes.StatusCodes.OK).json({
           code: StatusCodes.StatusCodes.OK,
-          data: result,
-          message: "WellCome Back!",
+          Token: result,
+          message: "Sucessfully login!",
         });
       })
       .catch((err) => {

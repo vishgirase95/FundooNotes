@@ -1,5 +1,6 @@
 const DataModel = require("../model/model.js");
 const bcrypt = require("bcrypt");
+var jwt = require('jsonwebtoken');
 
 
 
@@ -24,14 +25,16 @@ class UserRegitration {
       Email: body.Email
     })
 
-
+    var token = jwt.sign({ id: '61d90ed65bb9c2502c23f717', email:"vishgirase@gmail" }, 'shhhhh');
+  
+    
     const MatchPassword = await bcrypt.compare(body.Password, SearchDATA.Password)
     console.log("Pasword Match :", MatchPassword);
     if (body.Email == SearchDATA.Email) {
 
       if (MatchPassword) {
         console.log("Login is Sucessfull");
-        return "Login is Sucessfull";
+        return token;
       } else {
         console.log("Login attemp failed");
 
