@@ -23,7 +23,7 @@ const dataSchama = new mongoose.Schema({
     required: true,
     trim: true
   },
-  Token:String
+ 
 
 
 },
