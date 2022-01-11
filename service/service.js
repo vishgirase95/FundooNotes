@@ -67,16 +67,16 @@ class UserRegitration {
 
     return newNote;
   }
-  async getAllNote(req) {
-    console.log("body in get all ", req.body);
-    console.log("body in get userid ", req.body);
-    console.log("req.body.id", req.body.data.ID);
-    // console.log("body in get params ",body.params)
-    // console.log("body in get userid ",body.params.UserID)
+  // async getAllNote(req) {
+  //   console.log("body in get all ", req.body);
+  //   console.log("body in get userid ", req.body);
+  //   console.log("req.body.id", req.body.data.ID);
+  //   // console.log("body in get params ",body.params)
+  //   // console.log("body in get userid ",body.params.UserID)
 
-    const newNote = await AddNoteModel.find();
-    return newNote;
-  }
+  //   const newNote = await AddNoteModel.find();
+  //   return newNote;
+  // }
   async getByUserNotesId(body) {
     const newNote = await AddNoteModel.find({
       UserID: body.data.ID

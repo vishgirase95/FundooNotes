@@ -57,24 +57,24 @@ class Registration {
     });
   }
 
-  getAll(req, res) {
-    UserService.getAllNote(req, res).then((result) => {
-      res
-        .status(StatusCodes.StatusCodes.OK)
-        .json({
-          code: StatusCodes.StatusCodes.OK,
-          data: result,
-          message: "Getting All Sucessfully",
-        })
-        .catch((er) => {
-          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
-            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
-            data: er,
-            message: "Getting Notes Failed",
-          });
-        });
-    });
-  }
+  // getAll(req, res) {
+  //   UserService.getAllNote(req, res).then((result) => {
+  //     res
+  //       .status(StatusCodes.StatusCodes.OK)
+  //       .json({
+  //         code: StatusCodes.StatusCodes.OK,
+  //         data: result,
+  //         message: "Getting All Sucessfully",
+  //       })
+  //       .catch((er) => {
+  //         res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+  //           code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+  //           data: er,
+  //           message: "Getting Notes Failed",
+  //         });
+  //       });
+  //   });
+  // }
 
   getByUserId(req, res) {
     UserService.getByUserNotesId(req.body).then((result) => {
