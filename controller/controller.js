@@ -1,14 +1,12 @@
 const UserService = require("../service/service.js");
-const StatusCodes =require('http-status-codes');
-
-
+const StatusCodes = require("http-status-codes");
 
 class Registration {
   Registration(req, res) {
     UserService.UserRegitration(req.body)
       .then((result) => {
         res.json({
-          code:StatusCodes.StatusCodes.OK,
+          code: StatusCodes.StatusCodes.OK,
           data: result,
           message: "Registerd successfully",
         });
@@ -40,101 +38,141 @@ class Registration {
       });
   }
 
-
-  AddNotes(req,res){
-    UserService.AddNotes(req.body).then((result)=>{
-      res.status(StatusCodes.StatusCodes.OK).json({
-        code:StatusCodes.StatusCodes.OK,
-        data:result,
-        message:"Added Sucessfully"
-      }).catch((er)=>{
-        res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
-          code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
-          data: er,
-          message: "Adding Note Failed",
+  AddNotes(req, res) {
+    UserService.AddNotes(req.body).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: "Added Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: "Adding Note Failed",
+          });
         });
-      })
-    })
+    });
   }
 
-
-
-  getAll(req,res){
-    UserService.getAllNote(req,res).then((result)=>{
-      res.status(StatusCodes.StatusCodes.OK).json({
-        code:StatusCodes.StatusCodes.OK,
-        data:result,
-        message:"Getting All Sucessfully"
-      }).catch((er)=>{
-        res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
-          code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
-          data: er,
-          message: "Getting Notes Failed",
+  getAll(req, res) {
+    UserService.getAllNote(req, res).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: "Getting All Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: "Getting Notes Failed",
+          });
         });
-      })
-    })
+    });
   }
 
-
-  
-  getByUserId(req,res){
-    UserService.getByUserNotesId(req.body).then((result)=>{
-      res.status(StatusCodes.StatusCodes.OK).json({
-        code:StatusCodes.StatusCodes.OK,
-        data:result,
-        message:"Got User Notes Sucessfully"
-      }).catch((er)=>{
-        res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
-          code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
-          data: er,
-          message: "Getting Notes of User Failed",
+  getByUserId(req, res) {
+    UserService.getByUserNotesId(req.body).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: "Got User Notes Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: "Getting Notes of User Failed",
+          });
         });
-      })
-    })
+    });
   }
 
-
-  getByNoteId(req,res){
-    UserService.ByNoteId(req,res).then((result)=>{
-      res.status(StatusCodes.StatusCodes.OK).json({
-        code:StatusCodes.StatusCodes.OK,
-        data:result,
-        message:"Got User Notes Sucessfully"
-      }).catch((er)=>{
-        res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
-          code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
-          data: er,
-          message: "Getting Notes of User Failed",
+  DeletedNotes(req, res) {
+    UserService.DeletedNotes(req, res).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: " Getting Deleted  Notes Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: " Getting Deleting Notes Failed",
+          });
         });
-      })
-    })
+    });
+  }
+
+  isArchived(req, res) {
+    UserService.isArchived(req, res).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: "Archive  Notes Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: "Archive Notes Failed",
+          });
+        });
+    });
+  }
+
+  updateByNoteId(req, res) {
+    UserService.updateByNoteId(req, res).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: "updated  Notes Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: "updation fail Failed",
+          });
+        });
+    });
+  }
+
+  trashNoteByNoteID(req, res) {
+    UserService.trashNoteByNoteID(req, res).then((result) => {
+      res
+        .status(StatusCodes.StatusCodes.OK)
+        .json({
+          code: StatusCodes.StatusCodes.OK,
+          data: result,
+          message: "Deleted Notes Sucessfully",
+        })
+        .catch((er) => {
+          res.status(StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).json({
+            code: StatusCodes.StatusCodes.INTERNAL_SERVER_ERROR,
+            data: er,
+            message: "Deleting fail Failed",
+          });
+        });
+    });
   }
 }
 
 module.exports = new Registration();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //   async findAll(req, res) {
 //     try {
