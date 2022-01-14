@@ -12,7 +12,7 @@ router.post("/addnote",Authencated, controller.AddNotes);
 router.get("/getnote",Authencated, controller.getByUserId);
 router.get("/isDelete",Authencated, controller.DeletedNotes);
 router.get("/isArchived",Authencated, controller.isArchived);
-router.patch("/isUpdate",Authencated, controller.updateByNoteId);
+router.patch("/isUpdate", controller.updateByNoteId);
 router.delete("/trashnote",Authencated, controller.trashNoteByNoteID);
 
 
@@ -22,7 +22,7 @@ router.delete("/trashnote",Authencated, controller.trashNoteByNoteID);
 
 router.get("/", (req, res) => {
   try {
-    res.json("wellcome");
+    res.send("wellcome");
   } catch (error) {
     res.send("error", error);
   }

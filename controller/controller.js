@@ -5,7 +5,7 @@ class Registration {
   Registration(req, res) {
     UserService.UserRegitration(req.body)
       .then((result) => {
-        res.json({
+        res.status(StatusCodes.StatusCodes.OK).json({
           code: StatusCodes.StatusCodes.OK,
           data: result,
           message: "Registerd successfully",

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use("/", routes);
 
 
-app.listen(port, (err) => {
+module.exports=  app.listen(port, (err) => {
     if (err) {
         console.log("Cannot start server 2000", err);
     } else {

@@ -10,10 +10,10 @@ class UserRegitration {
   async UserRegitration(body) {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(body.Password, salt);
-    console.log(hashedPassword);
+    // console.log("hashed",hashedPassword);
     body.Password = hashedPassword;
-    console.log("userID", body.data.UserID);
-
+    // console.log("userID", body.data.UserID);
+// console.log("body",body)
     const regData = await DataModel.create(body);
     return regData;
   }
@@ -26,7 +26,7 @@ class UserRegitration {
       Email: body.Email,
     });
 
-    console.log("login detail", SearchDATA);
+    // console.log("login detail", SearchDATA);
 
     console.log("id" + SearchDATA._id);
     const MatchPassword = await bcrypt.compare(
@@ -46,10 +46,10 @@ class UserRegitration {
         UserID: SearchDATA._id,
       };
       if (MatchPassword) {
-        console.log("Login is Sucessfull");
+        // console.log("Login is Sucessfull");
         return TokenData;
       } else {
-        console.log("Login attemp failed");
+        // console.log("Login attemp failed");
 
         throw new Error("Login Pasword wrong");
       }
@@ -89,19 +89,13 @@ class UserRegitration {
 
 
   async DeletedNotes(req, res) {
-    console.log("res", res);
-    console.log("req body", req.body);
+    
 
     const uniqueUserData = await AddNoteModel.find({
       UserID: req.body.data.ID,
       isDeleted: true,
     });
-    // console.log("body.params",res.params);
-
-    // const noteById=await  AddNoteModel.findById(req.params.id);
-    // const noteById=await  AddNoteModel.findById(req.params.id);
-
-    console.log("get req", req);
+    
     return uniqueUserData;
   }
 
@@ -124,12 +118,7 @@ class UserRegitration {
 
   async updateByNoteId(req, res) {
 
-    console.log("req body", req.body);
-    console.log("req body note id", req.body.NoteID);
-    const previousData = await AddNoteModel.find({
-      _id: req.body.NoteID
-    });
-    console.log("previous data", previousData);
+
 
 
     const upDated = await AddNoteModel.updateOne({
@@ -140,12 +129,12 @@ class UserRegitration {
       color: req.body.color,
       isArchived: req.body.isArchived,
       isDeleted: req.body.isDeleted,
-      UserID: previousData.UserID,
+  
     }, {
       new: true
     });
 
-    console.log("get req", req);
+    console.log("get req body", req.body);
     return upDated;
   }
 

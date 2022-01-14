@@ -4,7 +4,7 @@ const URL = process.env.DATABASE;
 
 const DataBase = () => {
   mongoose
-    .connect(URL, { useNewUrlParser: true })
+    .connect(URL)
     .then(() => {
       console.log("Connected to datbase");
     })
